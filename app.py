@@ -4,7 +4,7 @@ from openai import RateLimitError
 
 openai.api_key = st.secrets["OPENAI_API_KEY"]
 
-st.title("GPT-3.5 Turbo Assistant")
+st.title("GPT-4o Assistant")
 
 prompt = st.text_area("Enter your prompt:")
 temperature = st.slider("Temperature", 0.0, 1.0, 0.7)
@@ -14,12 +14,12 @@ if st.button("Generate"):
     with st.spinner("Thinking..."):
         try:
             response = openai.chat.completions.create(
-                model="gpt-3.5-turbo",
+                model="gpt-4o",
                 messages=[{"role": "user", "content": prompt}],
                 temperature=temperature,
                 max_tokens=max_tokens
             )
-            st.markdown("### GPT-3.5 Turbo Response")
+            st.markdown("### GPT-4o Response")
             st.write(response.choices[0].message.content)
 
         except RateLimitError:
