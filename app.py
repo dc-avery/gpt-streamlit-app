@@ -14,17 +14,19 @@ if st.button("Generate"):
     with st.spinner("Thinking..."):
 from openai import RateLimitError
 
-try:
-    response = openai.chat.completions.create(
-        model="gpt-4o-mini",
-        messages=[{"role": "user", "content": prompt}],
-        temperature=temperature,
-        max_tokens=max_tokens
-    )
-    st.markdown("### GPT-4o-mini Response")
-    st.write(response.choices[0].message.content)
+if st.button("Generate"):
+    with st.spinner("Thinking..."):
+        try:
+            response = openai.chat.completions.create(
+                model="gpt-4o-mini",
+                messages=[{"role": "user", "content": prompt}],
+                temperature=temperature,
+                max_tokens=max_tokens
+            )
+            st.markdown("### GPT-4o-mini Response")
+            st.write(response.choices[0].message.content)
 
-except RateLimitError:
-    st.error("🚦 You're hitting OpenAI's rate limit. Please wait a moment and try again.")
-except Exception as e:
-    st.error(f"⚠️ An unexpected error occurred: {str(e)}")
+        except RateLimitError:
+            st.error("🚦 You're hitting OpenAI's rate limit. Please wait a moment and try again.")
+        except Exception as e:
+            st.error(f"⚠️ An unexpected error occurred: {str(e)}")
