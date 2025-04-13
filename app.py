@@ -13,7 +13,7 @@ max_tokens = st.slider("Max Tokens", 10, 2000, 500)
 if st.button("Generate"):
     with st.spinner("Thinking..."):
         response = openai.chat.completions.create(
-            model="gpt-4o",
+            model="gpt-4o-mini",
             messages=[{"role": "user", "content": prompt}],
             temperature=temperature,
             max_tokens=max_tokens
