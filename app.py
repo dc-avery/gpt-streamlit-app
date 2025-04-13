@@ -8,7 +8,7 @@ st.title("GPT-4o Assistant")
 
 prompt = st.text_area("Enter your prompt:")
 temperature = st.slider("Temperature", 0.0, 1.0, 0.7)
-max_tokens = st.slider("Max Tokens", 10, 2000, 500)
+max_tokens = st.slider("Max Tokens", 10, 4096, 1024)
 
 if st.button("Generate"):
     with st.spinner("Thinking..."):
