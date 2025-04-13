@@ -1,18 +1,14 @@
 import streamlit as st
 import openai
+from openai import RateLimitError
 
-# Pull the API key securely from Streamlit Cloud secrets
 openai.api_key = st.secrets["OPENAI_API_KEY"]
 
-st.title("GPT-4 Assistant")
+st.title("GPT-4o-mini Assistant")
 
 prompt = st.text_area("Enter your prompt:")
 temperature = st.slider("Temperature", 0.0, 1.0, 0.7)
 max_tokens = st.slider("Max Tokens", 10, 2000, 500)
-
-if st.button("Generate"):
-    with st.spinner("Thinking..."):
-from openai import RateLimitError
 
 if st.button("Generate"):
     with st.spinner("Thinking..."):
